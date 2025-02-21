@@ -1,7 +1,13 @@
+using Services.Loan;
+using Services.User;
+
 var builder = WebApplication.CreateBuilder( args );
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddHttpClient<LoanService>();
+builder.Services.AddHttpClient<UserService>();
 
 var app = builder.Build();
 

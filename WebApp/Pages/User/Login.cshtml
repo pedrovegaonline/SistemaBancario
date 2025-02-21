@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-12">
                     <label for="Email">Contrase&ntilde;a</label>
-                    <input type="password" placeholder="Email" id="Contraseña" maxlength="20" />
+                    <input type="password" placeholder="Contraseña" id="Password" maxlength="20" />
                 </div>
                 <div class="col-12">
                     <button type="submit" id="btnLogin" class="btn btn-dark">Ingresar</button>
@@ -27,18 +27,31 @@
     </div>
 </div>
 
-@{
+@section Scripts {
     <script type="text/javascript">
         $(document).ready(function () {
             $('#btnLogin').click(function (e) {
                 e.preventDefault();
                 var email = $('#Email').val();
-                var password = $('#Contraseña').val();
+                var password = $('#Password').val();
                 if (email.length == 0 || password.length == 0) {
                     alert('Los campos no pueden estar vacios.');
                     return;
                 }
-                $('form').submit();
+
+                $.ajax({
+                    type: "POST"
+                    , data: { Email: email, Password: password }
+                    , url: "/Loan/Index"
+                    , success: function (data) {
+                        if (data === "OK") {
+                            window.location.href = "/Loan/Index";
+                        }
+                        else {
+                            alert('Error al iniciar sesión.');
+                        }
+                    }
+                });
             });
         });
     </script>
