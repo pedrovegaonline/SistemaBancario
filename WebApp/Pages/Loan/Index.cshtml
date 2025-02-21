@@ -1,14 +1,15 @@
 ﻿@page
 @model WebApp.Pages.Loan.IndexModel
+
 @{
-    ViewData [ "Title" ] = "Sistema Préstamos | Solicitudes";
+    ViewData [ "Title" ] = "Solicitudes";
 }
 
 <div class="row">
     <div class="col-12">
         <span class="display-5">Bienvenido, </span>
         &nbsp;
-        <a href="javascript:;" class="btn btn-dark">Cerrar Sesi&oacute;n</a>
+        <a asp-area="" asp-page="/User/Login" id="lnkLogout" class="btn btn-dark">Cerrar Sesi&oacute;n</a>
     </div>
 </div>
 

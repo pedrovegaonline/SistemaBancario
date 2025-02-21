@@ -1,7 +1,7 @@
 ﻿@page
 @model WebApp.Pages.User.IndexModel
 @{
-    ViewData [ "Title" ] = "Sistema Préstamos | Acceso";
+    ViewData [ "Title" ] = "Acceso";
 }
 
 <h2>Iniciar Sesión</h2>
@@ -36,22 +36,33 @@
                 var password = $('#Password').val();
                 if (email.length == 0 || password.length == 0) {
                     alert('Los campos no pueden estar vacios.');
+
+                    if (email.length == 0)
+                    {
+                        $('#Email').focus();
+                    }
+                    else {
+                        $('#Password').focus();
+                    }
+
                     return;
                 }
 
-                $.ajax({
-                    type: "POST"
-                    , data: { Email: email, Password: password }
-                    , url: "/Loan/Index"
-                    , success: function (data) {
-                        if (data === "OK") {
-                            window.location.href = "/Loan/Index";
-                        }
-                        else {
-                            alert('Error al iniciar sesión.');
-                        }
-                    }
-                });
+                window.location.href = "/Loan/Index";
+
+                // $.ajax({
+                //     type: "POST"
+                //     , data: { Email: email, Password: password }
+                //     , url: "/Loan/Index"
+                //     , success: function (data) {
+                //         if (data === "OK") {
+                //             window.location.href = "/Loan/Index";
+                //         }
+                //         else {
+                //             alert('Error al iniciar sesión.');
+                //         }
+                //     }
+                // });
             });
         });
     </script>
