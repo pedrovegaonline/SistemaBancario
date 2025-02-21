@@ -1,0 +1,63 @@
+﻿@page
+@model WebApp.Pages.Loan.IndexModel
+@{
+    ViewData [ "Title" ] = "Sistema Préstamos | Solicitudes";
+}
+
+<div class="row">
+    <div class="col-12">
+        <span class="display-5">Bienvenido, </span>
+        &nbsp;
+        <a href="javascript:;" class="btn btn-dark">Cerrar Sesi&oacute;n</a>
+    </div>
+</div>
+
+<h5>Solicitar Pr&#233;stamo</h5>
+<small>Ingrese el monto que desea solicitar</small>
+
+<div class="row">
+    <div class="col-12">
+        <form method="post" class="form" enctype="application/x-www-form-urlencoded">
+            <div class="row">
+                <div class="col-12">
+                    <label for="Amount">Monto</label>
+                    <input type="number" id="Amount" name="Amount" value="0" />
+                </div>
+                <br />
+                <div class="col-12">
+                    <button type="submit" id="btnSend" class="btn btn-dark">Solicitar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Mis Pr&#233;stamos</h5>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+@{
+    <script>
+        $(document).ready(function () {
+            $('#btnSend').click(function (e) {
+                e.preventDefault();
+                var amount = $('#Amount').val();
+                if (amount <= 0) {
+                    alert('El monto debe ser mayor a cero.');
+                    return;
+                }
+
+
+                $('form').submit();
+            });
+        });
+    </script>
+}
